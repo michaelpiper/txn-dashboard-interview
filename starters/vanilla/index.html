@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transactions — starter</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Transactions</h1>
+  <p id="status">Loading…</p>
+  <div id="app"></div>
+
+  <script>
+    // Served by the mock API, so relative /api URLs work with no setup.
+    const API = '/api';
+
+    async function main() {
+      const res = await fetch(`${API}/transactions?page_size=500`);
+      const body = await res.json();
+      document.getElementById('status').textContent = `Loaded ${body.total} transactions.`;
+      console.log('First transaction:', body.data[0]);
+
+      // TODO: render the table, search, status filter, pagination,
+      // a row action, and loading / empty / error states.
+    }
+
+    main();
+  </script>
+</body>
+</html>
